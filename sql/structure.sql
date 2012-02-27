@@ -1,0 +1,42 @@
+#SET FOREIGN_KEY_CHECKS=0;
+
+Drop Database IF EXISTS tagPeople;
+Create Database tagPeople;
+USE tagPeople;
+
+
+CREATE TABLE tags
+(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tag` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX (`id`)
+) ENGINE=INNODB;
+
+
+CREATE TABLE users
+(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(16) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX (`id`)
+) ENGINE=INNODB;
+
+CREATE TABLE tweets
+(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `text` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX (`id`)
+) ENGINE=INNODB;
+
+CREATE TABLE user_tag
+(
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_user` INT UNSIGNED NOT NULL,
+  `id_tag` INT UNSIGNED NOT NULL,
+  `id_user_tagger` INT UNSIGNED NOT NULL,
+  `id_tweet` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX (`id`)
+) ENGINE=INNODB;
