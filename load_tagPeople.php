@@ -10,7 +10,7 @@
  */
 
 
-echo "tagPeople";
+echo "<h1>tagPeople</h1>";
 
 include('lib/TwitterSearch.php');
 
@@ -22,17 +22,14 @@ $results = $search->results();
 
 foreach($results as $i)
 {
-	echo $i->from_user . ": " . $i->text;
+	//echo $i->from_user . ": " . $i->text;
 
-	//$l = preg_replace("/@([a-z0-9A-Z_]{1,15})/", "<a href=\"http://twitter.com/\\1\">@\\1</a>", $l);
+	preg_match_all('/@([a-z0-9A-Z_]{1,15})/', $i->text, $taggedOnes);
+	preg_match_all('/#([a-z0-9A-Z_]{1,15})/', $i->text, $tags);
+	//var_dump($taggedOnes);
 
-	//preg_match($suchmuster, $zeichenkette, $treffer, PREG_OFFSET_CAPTURE, 3);
-	preg_match('/@([a-z0-9A-Z_]{1,15})/', $i->text, $taggedOnes);
-	var_dump($taggedOnes);
-	foreach($taggedOnes as $j)
-	{
-		echo "<strong>" . $j . "</strong>";
-	}
+	echo $i->from_user. " tagged " . join(', ', $taggedOnes[0]) . " with " . join(', ', $tags[0]);
+
 	echo "<br />";
 }
 ?>
