@@ -49,4 +49,4 @@ AS
     ON ut.id_tag = t.id
     INNER JOIN users AS u
     ON ut.id_user = u.id
-  ORDER BY t.tag;
+  GROUP BY t.tag;
